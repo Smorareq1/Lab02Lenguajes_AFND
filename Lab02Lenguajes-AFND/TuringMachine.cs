@@ -4,7 +4,7 @@ public class TuringMachine
 {
     public void ComputeComplement(string input)
     {
-        // Convertir la entrada en una cinta de caracteres
+        
         char[] tape = input.ToCharArray();
 
         // Estado inicial
