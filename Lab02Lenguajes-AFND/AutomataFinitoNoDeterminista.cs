@@ -1,4 +1,5 @@
 ﻿namespace Lab02Lenguajes_AFND;
+using System.Text.RegularExpressions;
 
 public class AutomataFinitoNoDeterminista
 {
@@ -52,19 +53,16 @@ public class AutomataFinitoNoDeterminista
     }
     public bool Accepts(string input)
     {
-        bool startsWithAC = false;
-        bool endsWithAB = false;
-        
-        if (input.StartsWith("ac"))
+        // Verifica si el input solo contiene 'a', 'b' o 'c'
+        if (!Regex.IsMatch(input, "^[abc]*$"))
         {
-            startsWithAC = true;
+            return false; // Si hay otros caracteres, no acepta la entrada
         }
-        
-        if (input.EndsWith("ab"))
-        {
-            endsWithAB = true;
-        }
-        
+
+        bool startsWithAC = input.StartsWith("ac");
+        bool endsWithAB = input.EndsWith("ab");
+
+        // Acepta si no empieza con "ac" o no termina con "ab"
         return !startsWithAC || !endsWithAB;
     }
 }
